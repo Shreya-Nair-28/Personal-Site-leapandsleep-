@@ -1,0 +1,226 @@
+*{
+    box-sizing:border-box;
+
+}
+body{
+    margin:0;
+    padding:0 8%;
+    font-family:'Poppins', sans-serif;
+    background-color: #0a0023;
+    background-image: url("images/leapandsleep bg.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    scroll-behavior:smooth;
+    color:#e2e8f0;
+} 
+ 
+header {
+    padding: 20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav {
+
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo img{
+    height: auto;
+    width: 130px;;
+    object-fit:contain;
+}
+nav a {
+    text-decoration:none;
+    color:#98bef0;
+    font-size:16px;
+    font-weight:500;
+    transition: color 0.3s ease;  
+
+}
+
+.nav-links {
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a {
+    text-decoration:none;
+    color:#98bef0;
+    font-size:16px;
+    font-weight:500;
+    transition: color 0.3s ease;  
+}
+
+.nav-links a:hover{
+    color:rgb(196, 55, 189)
+}
+
+.hero {
+    min-height: 75vh;
+    padding:50px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.hero-text {
+    max-width:550px;
+}
+
+.hero h1 {
+
+    font-size: 50px;
+    margin:10px 0;
+    color:violet
+
+}
+
+.hero h1 b{
+    max-width:500px;
+    font-size: 18px;
+    color:rgb(13, 80, 223)
+
+}
+
+.hero .eyebrow {
+    color:rgb(87, 152, 233);
+    font-size: 13px;
+    font-weight:600;
+    text-transform:uppercase;
+    margin:0;
+}
+
+.hero .intro {
+    max-width:600px;
+    font-size: 20px;
+    line-height:1.5;
+    margin:20px 0;
+    color:salmon
+}
+
+.hero img{
+
+    width:350px;
+    height:350px;
+    object-fit:contain;
+    border-radius:15px;
+
+}
+
+.section{
+    padding:70px 0;
+}
+
+.section > p:first-child,
+.section-label{
+    color:rgb(67, 142, 234);
+    font-size: 16px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.section h2 {
+    font-size:16px;
+    margin-top:5px;
+    margin-bottom:20px;
+    color:rgb(255, 248, 121)
+}
+
+.body-text {
+    font-size: 20px;
+    max-width: 700px;
+    line-height:1.5;
+    color:rgb(142, 77, 255);
+}
+
+.cards {
+    display:flex;
+    flex-direction:row;
+    gap: 35px;
+    margin-top:20px;
+    justify-content:space-between;
+    width:100%;
+}
+
+.cards div {
+    background:rgba(105, 74, 196, 0.8);
+    backdrop-filter:blur(10px);
+    padding:15px;
+    flex:1;
+    border-radius:10px;
+    max-width:300px;
+    box-sizing:border-box;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.cards div img
+{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+.cards h3{
+
+    margin-top:0;
+    color:#f1f5f9;
+    align-items:center;
+}
+.cards p{
+    color:rgb(0, 0, 0);
+    line-height:1.5;
+    align-items:center;
+}
+
+.card-image{
+
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:15px;
+    margin-top:15px;
+}
+
+.contact.links a {
+    color:rgb(241, 171, 87);
+    font-weight:600;
+    text-decoration:none;
+    font-size:20px;
+
+}
+
+.contact.links a:hover {
+    color:rgb(255, 186, 186);
+    text-decoration:dotted;
+    text-decoration:underline;
+}
+
+.contact .links a img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+}
+footer {
+    padding:30px 0;
+    text-align:center;
+    color:rgb(230, 208, 252);
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+.contact .links a img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
