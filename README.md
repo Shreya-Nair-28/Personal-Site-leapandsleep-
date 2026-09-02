@@ -27,7 +27,7 @@ So, I've used very minimal AI.
 
 I did the bg and logo design using Canva. The design does need a little work (especially the colour scheme). I plan to improve that soon. I also hope to add more of my creative works (currently a collection of 3 only).
 
-## 📂 Files
+## Files
 
 ```text
 index.html          ~ Home
