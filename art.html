@@ -56,6 +56,57 @@
             <p>©️2026 SHREYA NAIR</p>
         </footer>
 
+        <div class="photo-popup">
+            <span class="close" id="close-popup">&times; </span>
+            <button id="prev-photo">⬅️</button>
+            <img id="popup-image" src="" alt="Popup Image">
+            <button id="next-photo">➡️</button>
+        </div>
+
+        <script>
+            const photos=document.querySelectorAll('.cards img');
+            const popup=document.getElementById('popup-image');
+            const closePopup=document.getElementById('close-popup');
+            const photoPopup=document.querySelector('.photo-popup');
+            const prevPhoto=document.getElementById('prev-photo');
+            const nextPhoto=document.getElementById('next-photo');
+
+            let currentPhoto=0;
+            photos.forEach((photo,index)=>{
+                photo.addEventListener('click',()=>
+                {
+                currentPhoto=index;
+                photoPopup.style.display='flex';
+                popup.src=photo.src;
+        });
+            });
+
+            closePopup.addEventListener('click',()=>{
+                photoPopup.style.display='none';
+            });
+
+            photoPopup.addEventListener('click',(event)=>{
+                if(event.target===photoPopup){
+                    photoPopup.style.display='none';
+
+                }
+                
+            });
+
+            nextPhoto.addEventListener('click',(event)=>{
+                event.stopPropagation();
+                currentPhoto=(currentPhoto+1)%photos.length;
+                popup.src=photos[currentPhoto].src;
+            });
+
+            prevPhoto.addEventListener('click',(event)=>{
+                event.stopPropagation();
+                currentPhoto=(currentPhoto-1+photos.length)%photos.length;
+                popup.src=photos[currentPhoto].src;
+            });
+
+        </script>
+
             
         
 </body>
