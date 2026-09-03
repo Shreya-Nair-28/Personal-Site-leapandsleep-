@@ -12,7 +12,11 @@
 
     <body>
 
-    
+        <div class="stars">
+            
+        </div>
+
+       
         <header>
             <nav class="navbar">
                 <a href='index.html' class="logo" >
@@ -41,31 +45,63 @@
                 <p class="eyebrow">
                     👾 Welcome to my personal portfolio! 👾
                 </p>
-                <h1> <b> Hi there! </b> </h1>
+                <h1> <b> Helloooooooooooooo </b> </h1>
                 <p class="intro">
-                    Hello wanderer. Welcome to my personal website! Here, you can find all my work- photography, art and know a little bit about me!
+                    Greetings wanderer. Welcome to my personal website! Here, you can find all my work- photography, art and know a little bit about me!
                 </p>
                 <a href="about.html" class="btn"> Learn more about me! </a>
             </div>
             <div>
-                <img src="images/leapandsleeplogo.png" alt="Shreya's photo" class="hero-image">
+                <img src="images/saturn.png" alt="Shreya's photo" class="hero-image">
             </div>
         </section>
     
-
-        
-
-        
-
-        
-
-        
-
         <footer>
             <p>©️2026 SHREYA NAIR</p>
         </footer>
 
+          <script>
+            const starArea=document.querySelector('.stars');
+            const starImages=[
+                'images/star1.webp',
+                'images/star2.png',
+                'images/star3.png',
+            ];
             
+            const stars=[];
+            for (let i=0;i<50;i++){
+                const star=document.createElement("img");
+            star.src=starImages[Math.floor(Math.random()*starImages.length)];
+            const size=Math.random()*20+10;
+            star.style.width=size+'px';
+            star.style.height=size+'px';
+            star.style.left=Math.random()*100+'%';
+            star.style.top=Math.random()*100+'%';
+            star.style.animationDuration=Math.random()*4+3+'s';
+            starArea.appendChild(star);
+            stars.push(star);
+            }
+            document.addEventListener('mousemove',(event)=>{
+                stars.forEach(star=>{
+                    const rect= star.getBoundingClientRect();
+                    const starX=rect.left + rect.width/2;
+                    const starY=rect.top + rect.height/2;
+                    const distanceX=starX-event.clientX;
+                    const distanceY=starY-event.clientY;
+                    const distance=Math.sqrt(distanceX**2+distanceY**2);
+                    if (distance<150){
+                        const strength=(150-distance)/150;
+                        star.style.transform=`translate(${distanceX * strength}px, ${distanceY * strength}px)`;
+
+                    }
+                    else{
+                        star.style.transform='translate(0,0)';
+
+                    }
+
+                });
+            });
+          </script>  
         
 </body>
 </html>
