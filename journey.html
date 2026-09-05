@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title> My journey </title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    
+
+    <body>
+
+        <div class="journey-space">
+             
+
+        <div class="journey-popup" id="journey-popup">
+            <h2> Photography</h2>
+            <p>
+                I started getting into photography during my time back in my hometown, Kerala.
+                My backyard was filled with birds and creatures visiting.
+                I've taken quite a few memorable ones!
+            </p>
+        </div>
+
+    <div class="universe" id="universe">
+        <div class="journey-title">
+            <p>MY JOURNEY</p>
+            <h1>Fly through my universe and visit the planets to find a little piece of information about me!</h1>
+            <span>Use the arrow keys to navigate</span>
+        </div>
+
+       
+
+        <div class="journey-stop photography-stop" id="photography-stop">
+            <img src="images/planet1.png" alt="photography planet">
+            <div class="stop-card">
+                <h2> Photography</h2>
+            <p>
+                I started getting into photography during my time back in my hometown, Kerala.
+                My backyard was filled with birds and creatures visiting.
+                I've taken quite a few memorable ones!
+            </p>
+                
+            </div>
+        </div>
+        <div class="journey-stop art-stop" id="art-stop">
+            <img src="images/planet2.png" alt="art planet">
+             <div class="stop-card" id="art-card">
+                <h2> Art and Crafts</h2>
+            <p>
+                I love experimenting with all kinds of art and DIY!
+                </p>
+                </div>
+        </div>
+        <div class="journey-stop athletics-stop" id="athletics-stop">
+            <img src="images/planet3.png" alt="athletics planet">
+            <div class="stop-card" id="athletics-card">
+                <h2>Athletics</h2>
+                <p>At school I've won medals in 100m,200m,4x100m and hurdles!</p>
+            </div>
+        </div>
+        <div class="journey-stop achievements-stop" id="achievements-stop">
+            <img src="images/planet4.png" alt="achievemnts planet">
+            <div class="stop-card" id="achievements-card">
+                <h2>Achievements</h2>
+                <p>I won the Young Weather Photographer of the Year Runner-up award by the Royal Meteorological Society UK!</p>
+            </div>
+        </div>
+
+        <div class="journey-stop biomedical-stop" id="biomedical-stop">
+            <img src="images/planet5.png" alt="biomedical engineering planet">
+            <div class="stop-card" id="biomedical-card">
+                <h2> Biomedical Engineering</h2>
+                <p>
+                    I'm heading to the University of Sydney in Feb 2027 to pursue Biomedical Engineering!
+                </p>
+            </div>
+
+        </div>
+
+        </div>
+            
+        
+            
+        
+
+    </div>
+
+    <img src="images/milano.png" alt="Milano" class="milano" id="milano">
+    <video class="final-flash" id="final-flash">
+        <source src="images/final-video.mp4" type="video/mp4">
+    </video>
+        
+        
+        <script>
+
+    const universe = document.getElementById("universe");
+
+    let x = 0;
+    let y = 0;
+    let journeyFinished=false;
+    const speed = 15;
+
+    document.addEventListener("keydown", function(event) {
+        if(journeyFinished) return;
+        if (event.key === "ArrowLeft") {
+            x += speed;
+        }
+
+        if (event.key === "ArrowRight") {
+            x -= speed;
+        }
+
+        if (event.key === "ArrowUp") {
+            y += speed;
+        }
+
+        if (event.key === "ArrowDown") {
+            y -= speed;
+        }
+
+    
+        universe.style.transform =  `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+
+    });
+
+    const planet=document.querySelector("#photography-stop img");
+    const popup=document.getElementById("journey-popup");
+    const artPlanet=document.querySelector("#art-stop img");
+    const artCard=document.getElementById("art-card");
+    const athleticsPlanet=document.querySelector("#athletics-stop img");
+    const athleticsCard=document.getElementById("athletics-card");
+    const achievementsPlanet=document.querySelector("#achievements-stop img");
+    const achievementsCard=document.getElementById("achievements-card");
+    const biomedicalPlanet=document.querySelector("#biomedical-stop img");
+    const biomedicalCard=document.getElementById("biomedical-card");
+    function checkCollision(){
+
+        const milanoBox=document.getElementById("milano").getBoundingClientRect();
+        const planetBox=planet.getBoundingClientRect();
+        const touching= 
+        milanoBox.left< planetBox.right &&
+        milanoBox.right>planetBox.left &&
+        milanoBox.top< planetBox.bottom &&
+        milanoBox.bottom>planetBox.top;
+
+        if(touching){
+            popup.style.opacity="1";
+            
+        }
+        else{
+            popup.style.opacity="0";
+        }
+        requestAnimationFrame(checkCollision);
+
+    }
+    checkCollision();
+    function checkArtCollision(){
+        const milanoBox=document.getElementById('milano').getBoundingClientRect();
+        const artBox=artPlanet.getBoundingClientRect();
+
+        const touchingArt=
+        milanoBox.left<artBox.right &&
+        milanoBox.right>artBox.left &&
+        milanoBox.top<artBox.bottom &&
+        milanoBox.bottom>artBox.top;
+
+        if(touchingArt){
+            artCard.style.display="block";
+        }
+        else{
+            artCard.style.display="none";
+        }
+        requestAnimationFrame(checkArtCollision);
+    }
+    checkArtCollision();
+
+    function checkAthleticsCollision(){
+        const milanoBox=document.getElementById("milano").getBoundingClientRect();
+        const athleticsBox=athleticsPlanet.getBoundingClientRect();
+
+        const touchingAthletics=
+        milanoBox.left<athleticsBox.right &&
+        milanoBox.right>athleticsBox.left &&
+        milanoBox.top<athleticsBox.bottom &&
+        milanoBox.bottom>athleticsBox.top;
+
+        if(touchingAthletics){
+            athleticsCard.style.display="block";
+        }
+        else{
+            athleticsCard.style.display="none";
+        }
+        requestAnimationFrame(checkAthleticsCollision);
+    }
+    checkAthleticsCollision();
+
+    function checkAchievementsCollision(){
+        const milanoBox=document.getElementById("milano").getBoundingClientRect();
+        const achievementsBox=achievementsPlanet.getBoundingClientRect();
+         const touchingAchievements=
+         milanoBox.left<achievementsBox.right &&
+         milanoBox.right>achievementsBox.left &&
+         milanoBox.top<achievementsBox.bottom &&
+         milanoBox.bottom>achievementsBox.top;
+
+         if(touchingAchievements){
+            achievementsCard.style.display="block";
+         }
+         else{
+            achievementsCard.style.display="none";
+         }
+         requestAnimationFrame(checkAchievementsCollision);
+    }
+    checkAchievementsCollision();
+
+    const finalFlash=document.getElementById("final-flash")
+
+    function checkBiomedicalCollision(){
+        const milanoBox=document.getElementById("milano").getBoundingClientRect();
+        const biomedicalBox=biomedicalPlanet.getBoundingClientRect();
+        const touchingBiomedical=
+        milanoBox.left<biomedicalBox.right &&
+        milanoBox.right>biomedicalBox.left &&
+        milanoBox.top<biomedicalBox.bottom &&
+        milanoBox.bottom>biomedicalBox.top;
+
+        if(touchingBiomedical && !journeyFinished){
+            biomedicalCard.style.display="block";
+            setTimeout(function(){
+
+            
+            journeyFinished=true;
+            document.getElementById("milano").style.opacity="0";
+            finalFlash.style.opacity="1";
+            finalFlash.play();
+
+            finalFlash.onended=function(){
+                window.location.href="index.html"
+            }
+            },2000);
+
+        }
+        else if(!journeyFinished){
+            biomedicalCard.style.display="none";
+
+        }
+        requestAnimationFrame(checkBiomedicalCollision);
+
+    }
+    checkBiomedicalCollision();
+
+
+</script>
+    </body>
+</html>
