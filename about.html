@@ -28,24 +28,108 @@
                     <a href="contact.html">
                         Contact
                     </a>
+                   <a href="journey.html">
+                        <img src="images/milano.png" alt="Journey">
+                    </a>
                 </div>
             </nav>
         </header>
 
         <section id="about" class="section">
 
-            <p class="section-label"> ABOUT </p>
-            <h2> <b> ABOUT ME </b> </h2>
+            <p class="section-label"> ABOUT ME </p>
+            <h2> <b> WHO AM I? </b> </h2>
             <p class="body-text">
                 Hi there! I'm Shreya, an 18 year old student from India. I'm an aspiring biomedical engineering and an incoming student at the University of Sydney. Beyond academics, I love arts and craft, photography, reading, or learning something new.
             </p>
 
-        </section>
+            <div class="explore-world">
+                <div class="explore-item" data-info="I love discovering new places, ideas and perspectives.">
+                    <div class="explore-icon">🔭</div>
+                    <h3>curious explorer</h3>
+                    <div class="discovered-stars"></div>
+                </div>
+
+                <div class="explore-item" data-info="Painting, DIY and photography are my favourite hobbies.">
+                    
+                    <div class="explore-icon">🎨</div>
+                    <h3>Creative side</h3>
+                    <div class="paint-burst"></div>
+                </div>
+
+                <div class="explore-item" data-info="I'm heading to the University of Sydney to pursure Biomedical Engineering!">
+                    <div class="explore-icon">🔍</div>
+                    <h3> Aspiring Biomedical Engineer</h3>
+                    
+                </div>
+                    </div>
+
+        <p id="explore-info"></p>
+
+    </section>
 
         <footer>
             <p class="footer-text">
                 ©️ 2026 Shreya
             </p>
         </footer>
+
+       <script>
+const objects = document.querySelectorAll('.explore-item');
+const info = document.getElementById('explore-info');
+const paint = document.querySelector('.paint-burst');
+const telescope = document.querySelector('.explore-item');
+const discoveredStars = telescope.querySelector('.discovered-stars');
+
+const starImages=[
+    'images/star1.webp',
+    'images/star2.png',
+    'images/star3.png'
+];
+
+objects.forEach(object => {
+
+    object.addEventListener('click', () => {
+
+        info.textContent = object.dataset.info;
+
+        const rect = object.getBoundingClientRect();
+
+        info.style.left = rect.left + 'px';
+        info.style.top = rect.bottom + 10 + 'px';
+        info.style.opacity = '1';
+
+        object.style.transform = 'scale(1.15)';
+
+        if (object.querySelector('.paint-burst')){
+
+            paint.classList.remove('splash');
+            void paint.offsetWidth;
+            paint.classList.add('splash');
+        }
+
+        if(object===telescope){
+
+            discoveredStars.innerHTML='';
+            for (let i=0;i<8;i++){
+                const star= document.createElement("img");
+                star.src=starImages[Math.floor(Math.random()*starImages.length)];
+                star.style.setProperty('--x',(Math.random()*180-90)+'px');
+                star.style.setProperty('--y',(Math.random()*140-70)+'px');
+                discoveredStars.appendChild(star);
+            }
+            discoveredStars.classList.remove('show');
+            void discoveredStars.offsetWidth;
+            discoveredStars.classList.add('show');
+        }
+
+        setTimeout(() => {
+            object.style.transform = '';
+        }, 300);
+
+    });
+
+});
+</script>
     </body>
 </html>
