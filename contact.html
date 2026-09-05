@@ -27,26 +27,83 @@
                     <a href="contact.html">
                         Contact
                     </a>
+                    <a href="journey.html">
+                        <img src="images/milano.png" alt="Journey">
+                    </a>
                 </div>
             </nav>
         </header>
 
         <section id="contact" class="section contact">
-            <p class="section-label"> CONTACT </p>
-            <h2> Let's connect! </h2>
-            <p class="body-text">
-                Have a question or want to work together? Feel free to reach out!
-            </p>
-            <div class="links">
-                <a href="https://www.linkedin.com/in/shreya-28-nair/" target="_blank">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p class="section-label"> CONTACT </p>
+        
+                    <h2> Let's connect! </h2>
+                    <p class="body-text">
+                    Have a question or want to work together? Feel free to reach out!
+                    </p>
+                    <div class="links">
+                    <a href="https://www.linkedin.com/in/shreya-28-nair/" target="_blank">
                     <img src="images/linkedin.png" alt="LinkedIn logo">
-                </a>
-                <a href="https://www.instagram.com/petrificus.taurus/" target="_blank">
-                    <img src="images/instagram.png" alt="Instagram logo">
+                    </a>
+                    <a href="https://www.instagram.com/petrificus.taurus/" target="_blank">
+                    <img src="images/instagram.png" alt="Instagram logo"></a>
+            </div>
+            </div>
+            <img src="images/alien.gif" alt="Alien" class="contact-alien">
+            </div>
+            <div class="alien-chat">
+                <div class="alien-screen" id="alien-screen">
+                    Ask me anything about Shreya! Her hobbies and what she's studying!
+                </div>
+                <div class="alien-input">
+                    <input type="text" id="alien-question" placeholder="Ask me a question...">
+                    <button id="alien-ask">Ask </button>
+                </div>
             </div>
     
         </section>
         <footer>
-            <p>©️2026 SHREYA NAIR</p>
+            <p>All about me eloeloeloelo</p>
         </footer>
+
+
+        <script>
+
+            const question=document.getElementById('alien-question');
+            const askButton=document.getElementById('alien-ask');
+            const screen=document.getElementById('alien-screen');
+
+            function alienAnswer(){
+                const text=question.value.toLowerCase();
+                if(text.includes('study')||text.includes('course')||text.includes('degree')){
+                    screen.textContent="Shreya is heading to the University of Sydney to study Biomedical Engineering!";
+                }
+                else if(text.includes('hobbies')||text.includes('art')||text.includes('craft')||text.includes('paint')){
+                    screen.textContent="Shreya loves painting, DIY and experimenting with different kinds of art! Mandala art, bottle art, acrylic and watercolours...you name it! She also spends time photographing nature and wildlife";
+                }
+                else if(text.includes('hello')||text.includes('hi')){
+                    screen.textContent="Greetings, human. What do you wanna know about Shreya";
+                }
+                else if(text.includes('family')){
+                    screen.textContent="Shreya comes from a family of 4! She has a little sister";
+                }
+                else if(text.includes('sister')||text.includes('sibling')||text.includes('brother')){
+                    screen.textContent="Shreya has a 12 year old sister!";
+                }
+                else{
+                    screen.textContent="Hmm my tiny alien brain can't answer that yet";
+                }
+
+                question.value="";
+            }
+            askButton.addEventListener('click',alienAnswer);
+            question.addEventListener('keydown',(event)=>{
+                if(event.key==="Enter"){
+                    alienAnswer();
+                }
+            });
+        </script>
     </body>
+</html>
