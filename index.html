@@ -36,6 +36,9 @@
                     <a href="contact.html">
                         Contact
                     </a>
+                    <a href="journey.html">
+                        <img src="images/milano.png" alt="Journey">
+                    </a>
                 </div>
             </nav>
         </header>
@@ -54,54 +57,91 @@
             <div>
                 <img src="images/saturn.png" alt="Shreya's photo" class="hero-image">
             </div>
+            <div class="portals">
+                <a href="about.html" class="portal">
+                    <img src="images/portal1.gif" alt="Portal">
+                </a>
+                <a href="art.html" class="portal">
+                    <img src="images/portal1.gif" alt="Portal">
+                </a>
+                <a href="photography.html" class="portal">
+                    <img src="images/portal1.gif" alt="Portal">
+                </a>
+            </div>
         </section>
     
         <footer>
-            <p>©️2026 SHREYA NAIR</p>
+            <p>Leaping through space and sleeping through timeeeeeeeeee</p>
         </footer>
 
           <script>
-            const starArea=document.querySelector('.stars');
-            const starImages=[
-                'images/star1.webp',
-                'images/star2.png',
-                'images/star3.png',
-            ];
-            
-            const stars=[];
-            for (let i=0;i<50;i++){
-                const star=document.createElement("img");
-            star.src=starImages[Math.floor(Math.random()*starImages.length)];
-            const size=Math.random()*20+10;
-            star.style.width=size+'px';
-            star.style.height=size+'px';
-            star.style.left=Math.random()*100+'%';
-            star.style.top=Math.random()*100+'%';
-            star.style.animationDuration=Math.random()*4+3+'s';
-            starArea.appendChild(star);
-            stars.push(star);
+    const starArea=document.querySelector('.stars');
+
+    const starImages=[
+        'images/star1.webp',
+        'images/star2.png',
+        'images/star3.png',
+    ];
+
+    const stars=[];
+
+    for (let i=0;i<60;i++){
+        const star=document.createElement("img");
+
+        star.src=starImages[Math.floor(Math.random()*starImages.length)];
+
+        const size=Math.random()*20+10;
+
+        star.style.width=size+'px';
+        star.style.height=size+'px';
+        star.style.left=Math.random()*100+'%';
+        star.style.top=Math.random()*100+'%';
+        star.style.animationDuration=Math.random()*4+3+'s';
+
+        starArea.appendChild(star);
+        stars.push(star);
+    }
+
+    document.addEventListener('mousemove',(event)=>{
+        stars.forEach(star=>{
+            const rect=star.getBoundingClientRect();
+
+            const starX=rect.left + rect.width/2;
+            const starY=rect.top + rect.height/2;
+
+            const distanceX=starX-event.clientX;
+            const distanceY=starY-event.clientY;
+
+            const distance=Math.sqrt(distanceX**2+distanceY**2);
+
+            if (distance<150){
+                const strength=(150-distance)/150;
+
+                star.style.transform=
+                    `translate(${distanceX * strength}px, ${distanceY * strength}px)`;
             }
-            document.addEventListener('mousemove',(event)=>{
-                stars.forEach(star=>{
-                    const rect= star.getBoundingClientRect();
-                    const starX=rect.left + rect.width/2;
-                    const starY=rect.top + rect.height/2;
-                    const distanceX=starX-event.clientX;
-                    const distanceY=starY-event.clientY;
-                    const distance=Math.sqrt(distanceX**2+distanceY**2);
-                    if (distance<150){
-                        const strength=(150-distance)/150;
-                        star.style.transform=`translate(${distanceX * strength}px, ${distanceY * strength}px)`;
+            else{
+                star.style.transform='translate(0,0)';
+            }
+        });
+    });
 
-                    }
-                    else{
-                        star.style.transform='translate(0,0)';
+    const portals = document.querySelectorAll('.portal');
 
-                    }
+portals.forEach(portal => {
 
-                });
-            });
-          </script>  
+    let x;
+    let y;
+    do{
+    x = Math.random() * 85;
+    y= Math.random() * 75;
+} while(
+    (x>0&& x<45 &&y>15 && y<70)||(x>50&&y>20&&y<75)
+);
+portal.style.left=x+'%';
+portal.style.top=y+'%';
+});
+</script> 
         
 </body>
 </html>
